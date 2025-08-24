@@ -51,4 +51,15 @@
   --watermark-font-size: 0.875rem; /* +++++++++++14px */
   --card-title-weight: 715; /*++++++++++715 */
   --card-content-weight: 410; /*++++++++++410 */
+  
+  /* Акцентный цвет для кнопок */
+  --accent-color: #000000;
+  
+  /* Цвета для кнопок */
+  --button-text-color: #ffffff;
+  --button-bg-color: #ffffff;
+  --button-hover-text-color: #ffffff;
+  
+  /* Цвет иконки флоппи */
+  --floppy-color: #ffffff;
 }
