@@ -4,8 +4,110 @@
 ✦ like-icon — для svg-иконки анимированного сердца
 ✦ card__like-button — для кнопки Like рядом с иконкой
 ✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
 ✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
+
+/* Группа сердца (core + contour + main-body) */
+.like-icon .heart {
+  transition: transform 0.3s ease-in;
+  transform-origin: center; /* Добавляем сюда */
+}
+
+/* Контур сердца */
+.like-icon .contour {
+  fill: var(--contour-color);
+  transition: fill 0.1s linear;
+}
+
+/* Основное тело сердца */
+.like-icon .main-body {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+/* Сердцевина */
+.like-icon .core {
+  fill: transparent;
+  transition: fill 0.3s linear 0.03s;
+}
+
+/* Искры */
+.like-icon .sparks {
+  fill: var(--animation-fill-color);
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+
+/* Состояние по умолчанию - все переходы уже настроены выше */
+
+/* Hover состояния (только когда сердце НЕ лайкнуто) */
+.like-icon:not(.is-liked):hover .core {
+  fill: var(--accent-color); /* Акцентный цвет */
+  transition-delay: 0s; /* Отменяем задержку 0.03s */
+}
+
+.like-icon:not(.is-liked):hover .main-body {
+  fill: var(--accent-color); /* Акцентный цвет */
+  transition-delay: 0.05s; /* Изменяем задержку на 0.05s */
+}
+
+/* Active состояния (при зажатии) - повышенная специфичность */
+.like-icon:active .core,
+.like-icon:active:hover .core {
+  fill: var(--heart-fill-color); /* Красный цвет с приоритетом */
+  transition-delay: 0s; /* Те же настройки, что и при hover */
+}
+
+.like-icon:active .main-body,
+.like-icon:active:hover .main-body {
+  fill: var(--heart-fill-color); /* Красный цвет с приоритетом */
+  transition-delay: 0.05s; /* Те же настройки, что и при hover */
+}
+
+/* Состояние is-liked (при клике) */
+.like-icon.is-liked .core {
+  fill: var(--heart-fill-color); /* Красный цвет */
+  transition-delay: 0s; /* Отменяем задержку 0.03s */
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--heart-fill-color); /* Красный цвет */
+  transition-delay: 0.05s; /* Изменяем задержку на 0.05s */
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--heart-fill-color); /* Красный цвет */
+  transition: fill 0.3s linear 0.06s; /* Длительность 0.3s, задержка 0.06s */
+}
+
+/* Анимация масштабирования сердца */
+.like-icon.is-liked .heart {
+  animation: heart-scale 0.3s ease-in 0.1s; /* Запуск через 0.1s, длительность 0.3s, ease-in */
+}
+
+/* Анимация искр */
+.like-icon.is-liked .sparks {
+  animation: sparks-flash 0.3s ease-in 0.3s; /* Запуск через 0.3s, длительность 0.3s, ease-in */
+}
+
+/* Keyframes для масштабирования */
+@keyframes heart-scale {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.25);
+  }
+}
+
+/* Keyframes для вспышки искр */
+@keyframes sparks-flash {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
