@@ -1,1 +1,54 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+
+:root {
+  /* Шрифты */
+  --main-font-family: 'Inter Variable', 'Inter', Arial, sans-serif;
+  --accent-font-family: 'PressStart2P', 'Courier New', monospace;
+  
+  /* Веса вариативного шрифта */
+  --main-font-weight: 410;
+  --card-heading-font-weight: 700;
+  
+  /* Градиентный фон страницы */
+  --page-background: 
+    repeating-linear-gradient(
+      90deg,
+      #d3d3d3 0,
+      #d3d3d3 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      #d3d3d3 0,
+      #d3d3d3 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    linear-gradient(
+      180deg,
+      #e7e7e7 0.01%,
+      #1a1a1a 100%
+    );
+  
+  /* Резиновые размеры */
+  --content-width: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
+  --logo-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  --title-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  
+ 
+  
+  /* Вариативный маргин header сверху и снизу */
+  --header-margin-block: clamp(6.25rem, 6.25rem + 0vw, 6.25rem);
+  
+  /* Внутренние отступы header */
+  --header-padding: clamp(7.625rem, 6.5rem + 4.8vw, 8.125rem) clamp(1rem, -2.125rem + 13.33vw, 7.65625rem);
+  
+  /* Размеры карточек */
+  --main-width: 43.75rem; /* -----700px */
+  --card-title-height: 1.875rem; /*++++++++ 30px */
+  --card-content-font-size: 1.125rem; /* +++++++++++18px */
+  --watermark-font-size: 0.875rem; /* +++++++++++14px */
+  --card-title-weight: 715; /*++++++++++715 */
+  --card-content-weight: 410; /*++++++++++410 */
+}

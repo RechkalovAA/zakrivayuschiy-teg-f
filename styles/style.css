@@ -9,8 +9,274 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
+button {
+  background-color: white;
+}
+
+.button__text {
+  font-family: var(--accent-font-family);
+  font-size: 0.875rem; /* 14px */
+}
 
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--main-font-family);
+  font-variation-settings: 'wght' var(--main-font-weight);
+  background-image: var(--page-background);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* Общий класс для ширины контента */
+.content-width {
+  inline-size: var(--content-width);
+  margin: 0 auto;
+}
+
+/* Шапка */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--header-padding);
+  margin-block: var(--header-margin-block);
+  margin-inline: auto;
+  inline-size: var(--content-width);
+  background-color: white;
+  border: 2px solid black;
+}
+
+.logo__group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header__logo {
+  font-family: var(--accent-font-family);
+  font-size: var(--logo-size);
+  line-height: 1;
+  text-transform: uppercase;
+  margin-block-end: 20px;
+}
+
+.header__title {
+  font-family: var(--accent-font-family);
+  font-size: var(--title-size);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Основной контент */
+
+/* Карточка */
+.card {
+  background-color: white;
+  border: 2px solid black;
+  margin-block-end: 50px;
+}
+
+/* Заголовок карточки */
+.card__title {
+  font-family: var(--main-font-family);
+  font-variation-settings: 'wght' var(--card-title-weight);
+  font-size: var(--card-content-font-size);
+  line-height: 1.17;
+  inline-size: 100%;
+  block-size: auto;
+  min-block-size: var(--card-title-height);
+  padding: 4px 10px;
+  box-sizing: border-box;
+}
+
+/* Контейнер изображения */
+.card__image-container {
+  position: relative;
+  border-block: 2px solid black;
+}
+
+/* Изображение */
+.card__image {
+  inline-size: 100%;
+  block-size: auto;
+  max-block-size: 43.5rem; /* 696px */
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Водяной знак */
+.card__watermark {
+  position: absolute;
+  inset-block-start: 25px;
+  inset-inline-end: 25px;
+  font-family: var(--accent-font-family);
+  font-size: var(--watermark-font-size);
+  text-transform: uppercase;
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
+  text-shadow:
+  -1px 0 #FFFFFF, 
+  0 1px #FFFFFF, 
+  1px 0 #FFFFFF, 
+  0 -1px #FFFFFF;
+}
+
+@supports((text-stroke: 1px #FFFFFF) or (-webkit-text-stroke: 1px #FFFFFF)) {
+  .card__watermark {
+    -webkit-text-stroke: 1px #FFFFFF;
+    text-stroke: 1px #FFFFFF;
+    text-shadow: none;
+  }
+} 
+
+/* Контент карточки */
+.card__content {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.card__text {
+  margin-block-end: 25px;
+  font-family: var(--main-font-family);
+  font-variation-settings: 'wght' var(--card-content-weight);
+  font-size: var(--card-content-font-size);
+  line-height: 1.17;
+}
+
+.card__text:last-child {
+  margin-block-end: 0;
+}
+
+/* Контейнер кнопок */
+.card__buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Кнопка Like */
+.card__like-button {
+  inline-size: 8.125rem; /* 130px */
+  block-size: 2.375rem; /* 38px */
+  border: 2px solid black;
+}
+
+.card__icon-button {
+  border: 0px;
+  padding: 0;
+}
+
+/* Кнопка сохранения */
+.save-memory-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: auto;
+  margin-block-end: 3.75rem; /* 60px */
+  padding: 8px 16px;
+  border: 2px solid black;
+  cursor: pointer;
+  block-size: 55px;
+}
+
+/* Модальное окно */
+.memory-dialog {
+  /* Сброс стандартных браузерных настроек */
+  all: unset;
+  box-sizing: border-box;
+  
+  /* Основные стили */
+  border: 2px solid black;
+  inline-size: clamp(341px, 80vw, 353px);
+  block-size: clamp(150px, 40vh, 191px);
+  margin: auto;
+  padding: 0px;
+  overflow: hidden;
+  background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.memory-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dialog-title {
+  font-family: var(--accent-font-family);
+  font-size: 0.875rem; /* 14px */
+  text-transform: uppercase;
+  inline-size: clamp(200px, 60vw, 234px);
+  block-size: clamp(50px, 20vh, 63px);
+  line-height: 1.5;
+}
+
+/* Размер иконки флоппи в модальном окне */
+.memory-dialog svg {
+  margin: auto;
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: flex-start;
+  margin: 30px;
+}
+
+.dialog-ok-button {
+  inline-size: 18.3125rem; /* 293px */
+  block-size: 2.375rem; /* 38px */
+  border: 2px solid black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+/* Скрытие модального окна по умолчанию */
+.memory-dialog {
+  display: none;
+}
+
+/* Показ модального окна когда открыто */
+.memory-dialog[open] {
+  display: block;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (width <= 375px) {
+  .card__image {
+    max-block-size: 23.1875rem; /* 371px */
+  }
+  
+  .header {
+    max-block-size: 20.4375rem; /* 327px */
+  }
+  
+      .save-memory-button {
+    block-size: 5.25rem; /* 84px */
+    flex-direction: column;
+  }
+  
+  .save-memory-button svg {
+    inline-size: 1.75rem; /* 28px */
+    block-size: 1.75rem; /* 28px */
+  }
+  
+  .dialog-ok-button {
+    inline-size: 16.3125rem; /* 261px */
+    margin: 1.875rem 2.5rem;
+  }
+  
+  .dialog-content {
+    margin: 1.875rem 2.5rem; /* 30px сверху и снизу, 40px слева и справа */
+  }
 }
