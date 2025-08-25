@@ -358,7 +358,7 @@ button {
 .dialog-ok-button {
   inline-size: 18.3125rem; /* 293px */
   block-size: 2.375rem; /* 38px */
-  border: 2px solid black;
+  border: 2px solid rgb(0, 0, 0);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -410,6 +410,7 @@ button {
 
   .header {
     max-block-size: 20.4375rem; /* 327px */
+    margin-block: 6.25rem; /* 100px для мобильного */
   }
 
   .save-memory-button {
@@ -429,9 +430,5 @@ button {
 
   .dialog-content {
     margin: 1.875rem 2.5rem; /* 30px сверху и снизу, 40px слева и справа */
-  }
-
-  .header {
-    margin-block: 6.25rem; /* 100px для мобильного */
   }
 }
