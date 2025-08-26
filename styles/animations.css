@@ -37,31 +37,28 @@
 .like-icon .sparks {
   fill: var(--animation-fill-color);
   opacity: 0;
-  transition: opacity 0.3s ease-in;
 }
 
 /* Состояние по умолчанию - все переходы уже настроены выше */
 
-/* Hover состояния (только когда сердце НЕ лайкнуто) */
-.like-icon:not(.is-liked):hover .core {
+/* Hover состояния */
+.like-icon:hover .core {
   fill: var(--accent-color); /* Акцентный цвет */
   transition-delay: 0s; /* Отменяем задержку 0.03s */
 }
 
-.like-icon:not(.is-liked):hover .main-body {
+.like-icon:hover .main-body {
   fill: var(--accent-color); /* Акцентный цвет */
   transition-delay: 0.05s; /* Изменяем задержку на 0.05s */
 }
 
-/* Active состояния (при зажатии) - повышенная специфичность */
-.like-icon:active .core,
-.like-icon:active:hover .core {
+/* Active состояния (при зажатии) */
+.like-icon:active .core {
   fill: var(--heart-fill-color); /* Красный цвет с приоритетом */
   transition-delay: 0s; /* Те же настройки, что и при hover */
 }
 
-.like-icon:active .main-body,
-.like-icon:active:hover .main-body {
+.like-icon:active .main-body {
   fill: var(--heart-fill-color); /* Красный цвет с приоритетом */
   transition-delay: 0.05s; /* Те же настройки, что и при hover */
 }
@@ -107,7 +104,10 @@
   0% {
     opacity: 0;
   }
-  100% {
+  50% {
     opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
